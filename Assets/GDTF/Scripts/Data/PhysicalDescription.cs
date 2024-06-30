@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
+using GDTF.Data.PhysicalDescriptions;
 
 namespace GDTF.Data
 {
@@ -9,25 +10,27 @@ namespace GDTF.Data
     {
         #region Node Attributes
 
-        public List<PhysicalDescriptions.Emitter> emitters;
-        public List<PhysicalDescriptions.Filter> filters;
+        public List<Emitter> emitters;
+        public List<Filter> filters;
         public string colorSpace;
-
-        // public List<Gamut> _gamuts;
-        // public List<DMXProfile> _dMXProfiles;
-        // public CRIs _cRIs;
-        // public Connectors _connectors;
-        // public Properties _properties;
+        public List<Gamut> gamuts;
+        public List<DmxProfile> dmxProfiles;
+        public List<ColorRenderingIndexGroup> cris;
+        public List<Connector> connectors;
+        public Properties properties;
 
         #endregion
 
         public void LoadXml(XmlNode node)
         {
-            emitters = GdtfSerializer.GetChildNodes<PhysicalDescriptions.Emitter>(node, "Emitters/Emitter");
-            filters = GdtfSerializer.GetChildNodes<PhysicalDescriptions.Filter>(node, "Filters/Filter");
+            emitters = GdtfSerializer.GetChildNodes<Emitter>(node, "Emitters/Emitter");
+            filters = GdtfSerializer.GetChildNodes<Filter>(node, "Filters/Filter");
             colorSpace = GdtfSerializer.GetAttributeValue<string>(node, "ColorSpace");
-
-            // TODO
+            gamuts = GdtfSerializer.GetChildNodes<Gamut>(node, "Gamuts/Gamut");
+            dmxProfiles = GdtfSerializer.GetChildNodes<DmxProfile>(node, "DMXProfiles/DMXProfile");
+            cris = GdtfSerializer.GetChildNodes<ColorRenderingIndexGroup>(node, "CRIs/CRIGroup");
+            connectors = GdtfSerializer.GetChildNodes<Connector>(node, "Connectors/Connector");
+            properties = GdtfSerializer.GetChildNode<Properties>(node, "Properties");
         }
     }
 }
