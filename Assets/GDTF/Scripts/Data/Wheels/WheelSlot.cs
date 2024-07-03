@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using UnityEngine;
 
 namespace GDTF.Data.Wheels
 {
@@ -11,7 +10,7 @@ namespace GDTF.Data.Wheels
         #region Node Attributes
 
         public string name;
-        public Color color;
+        public ColorCIE color;
         public string colorString;
         public string filter;
         public string mediaFileName;
@@ -28,7 +27,7 @@ namespace GDTF.Data.Wheels
         public void LoadXml(XmlNode node)
         {
             name = GdtfSerializer.GetAttributeValue<string>(node, "Name");
-            color = GdtfSerializer.GetAttributeValue<Color>(node, "Color");
+            color = GdtfSerializer.GetAttributeValue<ColorCIE>(node, "Color");
             colorString = GdtfSerializer.GetAttributeValue<string>(node, "ColorString");
             filter = GdtfSerializer.GetAttributeValue<string>(node, "Filter");
             mediaFileName = GdtfSerializer.GetAttributeValue<string>(node, "MediaFileName");
@@ -44,14 +43,14 @@ namespace GDTF.Data.Wheels
     {
         #region Node Attributes
 
-        public Color color;
+        public ColorCIE color;
         public string rotation;
 
         #endregion
 
         public void LoadXml(XmlNode node)
         {
-            color = GdtfSerializer.GetAttributeValue<Color>(node, "Color");
+            color = GdtfSerializer.GetAttributeValue<ColorCIE>(node, "Color");
             rotation = GdtfSerializer.GetAttributeValue<string>(node, "Rotation");
         }
     }

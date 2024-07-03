@@ -1,6 +1,5 @@
 using System;
 using System.Xml;
-using UnityEngine;
 
 namespace GDTF.Data.PhysicalDescriptions
 {
@@ -8,14 +7,14 @@ namespace GDTF.Data.PhysicalDescriptions
     public class Filter : IGdtfElement
     {
         public string name;
-        public Color color;
+        public ColorCIE color;
 
         public Measurement measurement;
 
         public void LoadXml(XmlNode node)
         {
             name = GdtfSerializer.GetAttributeValue<string>(node, "Name");
-            color = GdtfSerializer.GetAttributeValue<Color>(node, "Color");
+            color = GdtfSerializer.GetAttributeValue<ColorCIE>(node, "Color");
 
             measurement = GdtfSerializer.GetChildNode<Measurement>(node, "Measurement");
         }

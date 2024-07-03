@@ -26,7 +26,7 @@ namespace GDTF
                 var t when t == typeof(DateTime) => (T) (object) DateTime.Parse(value),
                 var t when t == typeof(bool) => (T) ParseBool(value),
                 var t when t == typeof(GUID) => (T) (object) new GUID(value),
-                var t when t == typeof(Color) => (T) ParseColor(value),
+                var t when t == typeof(ColorCIE) => (T) (object) new ColorCIE(value),
                 var t when t.IsEnum => (T) Enum.Parse(typeof(T), value),
                 _ => throw new InvalidOperationException(typeof(T).ToString())
             };
@@ -40,16 +40,6 @@ namespace GDTF
                 "No" => false,
                 _ => throw new InvalidOperationException()
             };
-        }
-
-        private static object ParseColor(string value)
-        {
-            var color = new Color();
-            var colorValues = value.Split(',');
-            color.r = float.Parse(colorValues[0]);
-            color.g = float.Parse(colorValues[1]);
-            color.b = float.Parse(colorValues[2]);
-            return color;
         }
 
         public static T GetChildNode<T>(XmlNode node, string path) where T : IGdtfElement, new()

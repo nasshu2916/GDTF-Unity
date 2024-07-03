@@ -1,6 +1,5 @@
 using System;
 using System.Xml;
-using UnityEngine;
 
 namespace GDTF.Data.PhysicalDescriptions
 {
@@ -8,7 +7,7 @@ namespace GDTF.Data.PhysicalDescriptions
     public class Emitter : IGdtfElement
     {
         public string name;
-        public Color color;
+        public ColorCIE color;
         public float dominantWaveLength;
         public string diodePart;
 
@@ -17,7 +16,7 @@ namespace GDTF.Data.PhysicalDescriptions
         public void LoadXml(XmlNode node)
         {
             name = GdtfSerializer.GetAttributeValue<string>(node, "Name");
-            color = GdtfSerializer.GetAttributeValue<Color>(node, "Color");
+            color = GdtfSerializer.GetAttributeValue<ColorCIE>(node, "Color");
             dominantWaveLength = GdtfSerializer.GetAttributeValue<float>(node, "DominantWaveLength");
             diodePart = GdtfSerializer.GetAttributeValue<string>(node, "DiodePart");
 
