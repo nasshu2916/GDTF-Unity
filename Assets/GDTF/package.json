@@ -1,0 +1,16 @@
+{
+  "name": "net.naoyakohda.gdtf-unity",
+  "author": "Naoya Kohda",
+  "version": "0.1.0",
+  "displayName": "GDTF-Unity",
+  "description": "General Device Type Format (GDTF) library for Unity",
+  "dependencies": {},
+  "keywords": [
+    "unity",
+    "GDTF",
+    "General Device Type Format"
+  ],
+  "license": "MIT License",
+  "unity": "2021.3",
+  "samples": []
+}
